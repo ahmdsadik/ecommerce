@@ -8,6 +8,7 @@ This is a simple E-Commerce website built with Laravel with the following featur
 
 - **User registration and login:** Users can register and login to the website.
 - **Admin dashboard:** Admins can login to the admin dashboard to manage the website.
+- **Real-time chat:** Admins can chat with each other in real-time.
 - **Product management:** Admins can add, edit, and delete products.
 - **Order management:** Admins can view and manage orders.
 - **User management:** Admins can view and manage users.
@@ -33,8 +34,7 @@ This is a simple E-Commerce website built with Laravel with the following featur
 3. Install the dependencies:
 
     ```bash
-    composer install
-    npm install
+    composer install && npm install
     ```
 
 4. Create a copy of the `.env.example` file and rename it to `.env`:
