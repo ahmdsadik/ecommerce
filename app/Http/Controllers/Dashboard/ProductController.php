@@ -19,6 +19,13 @@ class ProductController extends Controller
 {
     use InteractWithFiles;
 
+    public function __construct()
+    {
+        $this->middleware('permission:product_create')->only(['create', 'store']);
+        $this->middleware('permission:product_update')->only(['edit', 'update']);
+        $this->middleware('permission:product_delete')->only('destroy');
+    }
+
     public function index()
     {
         return view('dashboard.product.index',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Enums\TagStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\Tag\TagStoreRequest;
 use App\Http\Resources\TagResource;
 use App\Models\Tag;
 use App\Traits\ApiResponse;
@@ -27,11 +28,11 @@ class TagController extends Controller
         return $this->successResponse(TagResource::collection($tags));
     }
 
-    public function store(Request $request)
+    public function store(TagStoreRequest $request)
     {
         $validator = Validator::make($request->all(), [
             app()->getLocale() . '.name' => ['required', 'string', 'unique:product_translations,name'],
-            'slug' => ['unique:products,slug'],
+            'slug' => ['required','unique:products,slug'],
         ], attributes: Tag::attributesNames()
         );
 
@@ -59,7 +60,7 @@ class TagController extends Controller
         } catch (\Exception $e) {
             return $this->errorResponse(__('dashboard/alerts/show.fail', ['model' => __('dashboard/models.tag')]));
         }
-        return $this->successResponse(new TagResource($tag));
+        return $this->successResponse(TagResource::make($tag));
     }
 
     public function update(Request $request, $id)
@@ -90,7 +91,7 @@ class TagController extends Controller
             DB::rollBack();
             return $this->errorResponse(__('dashboard/alerts/update.fail', ['model' => __('dashboard/models.tag')]));
         }
-        return new TagResource($tag);
+        return TagResource::make($tag);
     }
 
     public function destroy($id)

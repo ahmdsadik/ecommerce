@@ -26,11 +26,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @permission('store_create')
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="card-header">{{ __('dashboard/store/index.card_header') }}</h5>
                         <a class="btn btn-primary me-4 rounded-0"
                            href="{{ route('dashboard.stores.create') }}">{{ __('dashboard/store/index.add_btn') }}</a>
                     </div>
+                    @endpermission
                     <div class="table-responsive text-nowrap table-hover">
                         <table class="table">
                             <thead>
@@ -103,12 +105,15 @@
                                                     data-bs-toggle="dropdown"><i
                                                         class="bx bx-dots-vertical-rounded"></i></button>
                                             <div class="dropdown-menu">
+                                                @permission('store_update')
+
                                                 <a class="dropdown-item"
                                                    title="{{ __('dashboard/store/index.edit') }}"
                                                    href="{{ route('dashboard.stores.edit', $store) }}">
                                                     <i class="bx bx-edit-alt me-1"></i>{{ __('dashboard/store/index.edit') }}
                                                 </a>
-
+                                                @endpermission
+                                                @permission('store_delete')
                                                 <form action="{{ route('dashboard.stores.destroy',$store) }}"
                                                       method="post">
                                                     @csrf
@@ -119,6 +124,7 @@
                                                         {{ __('dashboard/store/index.delete') }}
                                                     </button>
                                                 </form>
+                                                @endpermission
                                             </div>
                                         </div>
                                     </td>

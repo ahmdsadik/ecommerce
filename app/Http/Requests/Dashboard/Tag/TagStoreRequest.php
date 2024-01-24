@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Dashboard\Tag;
 
 use App\Models\Tag;
+use App\Traits\ApiResponse;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -10,6 +12,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class TagStoreRequest extends FormRequest
 {
+    use ApiResponse;
+
     public function authorize(): bool
     {
         return true;
@@ -37,7 +41,6 @@ class TagStoreRequest extends FormRequest
     }
 
 
-
     /**
      * Prepare the data for validation.
      */
@@ -60,6 +63,7 @@ class TagStoreRequest extends FormRequest
             );
         }
     }
+
 
     /**
      * Get custom attributes for validator errors.

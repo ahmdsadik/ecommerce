@@ -17,13 +17,8 @@
 
     <script src="{{ asset('assets/dashboard/js/app-chat.js') }}"></script>
 
-    <script>
-        const user_id = '{{ auth('admin')->id() }}';
-        const user_name = '{{ auth('admin')->user()->name }}';
-        const csrf_token = '{{ csrf_token() }}';
-    </script>
 
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/chat.js'])
 @endpush
 
 

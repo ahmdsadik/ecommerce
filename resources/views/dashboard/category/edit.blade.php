@@ -158,7 +158,7 @@
                                     <label class="switch switch-lg">
                                         <input type="checkbox"
                                                name="status"
-                                               @checked( old('status', $category->status->value ) == \CategoryStatus::ACTIVE->value)
+                                               @checked( old('status', $category->status->value ) == CategoryStatus::ACTIVE->value)
                                                class="switch-input"
                                         >
                                         <span class="switch-toggle-slider">

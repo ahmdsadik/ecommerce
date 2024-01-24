@@ -16,8 +16,18 @@ class CategoryController extends Controller
 {
 //    use InteractWithFiles;
 
+    public function __construct()
+    {
+        $this->middleware('permission:category_create')->only(['create', 'store']);
+        $this->middleware('permission:category_update')->only(['edit', 'update']);
+        $this->middleware('permission:category_delete')->only('destroy');
+    }
+
     public function index()
     {
+//        dd(request()->getRequestUri(), request()->is('dashboard/categories'),request()->routeIs('dashboard.categories.index'));
+//        return request()->getRequestUri();
+
         return view('dashboard.category.index',
             [
                 'categories' => Category::with(['media', 'parent'])->paginate(5)
@@ -27,6 +37,7 @@ class CategoryController extends Controller
 
     public function create()
     {
+//        abort_if(!auth()->user()->hasPermission('category_create'), 403, 'aa7a');
         return view('dashboard.category.create',
             [
                 'categories' => Category::select('id')->get()

@@ -21,7 +21,7 @@ class Product extends Model implements TranslatableContract, HasMedia
 {
     use HasFactory, Translatable, InteractsWithMedia, SoftDeletes;
 
-    // TODO:: Add qty and in_stock
+    // TODO:: Add in_stock
 
     protected $fillable = [
         'slug',
@@ -41,7 +41,6 @@ class Product extends Model implements TranslatableContract, HasMedia
 
     protected $with = ['translations'];
 
-
     protected $casts = [
         'options' => 'array',
         'status' => ProductStatus::class
@@ -57,7 +56,6 @@ class Product extends Model implements TranslatableContract, HasMedia
         };
     }
 
-
     public static function statusValues(): array
     {
         return [
@@ -67,7 +65,7 @@ class Product extends Model implements TranslatableContract, HasMedia
         ];
     }
 
-    /****************** Media **************************/
+    ############################# Media #####################################
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('logo')
@@ -81,7 +79,7 @@ class Product extends Model implements TranslatableContract, HasMedia
         ;
     }
 
-    /****************** Scopes ************************/
+    ############################# Scopes #####################################
 
     public function scopeFeature($query)
     {
@@ -173,7 +171,7 @@ class Product extends Model implements TranslatableContract, HasMedia
         return $query;
     }
 
-    /************************** Observers ****************************/
+    ############################# Observers #####################################
 
     protected static function booted()
     {
@@ -196,7 +194,7 @@ class Product extends Model implements TranslatableContract, HasMedia
         });
     }
 
-    /**************************** Relations *************************/
+    ############################# Relations #####################################
 
     public function store(): BelongsTo
     {
@@ -218,7 +216,7 @@ class Product extends Model implements TranslatableContract, HasMedia
         return $this->hasMany(Review::class)->latest()->limit(3);
     }
 
-    /**************** Static Methods ****************/
+    ############################# Static Methods ################################
 
     public static function translatedAttributes(): array
     {

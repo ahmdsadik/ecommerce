@@ -9,12 +9,14 @@ class AdminSeeder extends Seeder
 {
     public function run(): void
     {
-        Admin::create(
+        $admin = Admin::create(
             [
                 'name' => 'Admin name',
                 'email' => 'admin@example.com',
                 'password' => 'password'
             ]
         );
+
+        $admin->addRole(1);
     }
 }

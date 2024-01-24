@@ -133,11 +133,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @permission('product_create')
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="card-header">{{ __('dashboard/product/index.card_header') }}</h5>
                         <a class="btn btn-primary me-4 rounded-0"
                            href="{{ route('dashboard.products.create') }}">{{ __('dashboard/product/index.add_btn') }}</a>
                     </div>
+                    @endpermission
                     <div class="table-responsive text-nowrap table-hover">
                         <table class="table">
                             <thead>
@@ -208,13 +210,14 @@
                                                     data-bs-toggle="dropdown"><i
                                                     class="bx bx-dots-vertical-rounded"></i></button>
                                             <div class="dropdown-menu">
+                                                @permission('product_update')
                                                 <a class="dropdown-item"
                                                    title="{{ __('dashboard/roduct/index.edit') }}"
                                                    href="{{ route('dashboard.products.edit', $product) }}">
                                                     <i class="bx bx-edit-alt me-1"></i>{{ __('dashboard/product/index.edit') }}
                                                 </a>
-
-
+                                                @endpermission
+                                                @permission('product_delete')
                                                 <form action="{{ route('dashboard.products.destroy',$product) }}"
                                                       method="post">
                                                     @csrf
@@ -225,6 +228,7 @@
                                                         {{ __('dashboard/product/index.delete') }}
                                                     </button>
                                                 </form>
+                                                @endpermission
                                             </div>
                                         </div>
                                     </td>

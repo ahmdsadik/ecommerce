@@ -17,16 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+########################### Start Auth Routes #####################################
+Route::post('/login', [AuthController::class, 'store']);
+Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
+Route::middleware('auth:sanctum')->delete('/logout', [AuthController::class, 'destroy']);
+############################# End Auth Routes #####################################
 
 
+Route::apiResource('products', ProductController::class);
+Route::apiResource('tags', TagController::class);
 
-Route::as('api.')->group(function (){
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('tags', TagController::class);
-
-    Route::post('/login', [AuthController::class, 'store']);
-    Route::middleware('auth:sanctum')->delete('/logout', [AuthController::class, 'destroy']);
-});

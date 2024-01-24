@@ -44,6 +44,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\ForceJsonResponseMiddleware::class,
             \App\Http\Middleware\CheckApiKeyMiddleware::class,
+            \App\Http\Middleware\ApiLocalizationMiddleware::class,
         ],
     ];
 
@@ -79,5 +80,7 @@ class Kernel extends HttpKernel
         'RemoveEmptyOrNull' => \App\Http\Middleware\RemoveEmptyValueOrNullMiddleware::class,
         'CheckApiKey' => \App\Http\Middleware\CheckApiKeyMiddleware::class,
         'ForceJson' => \App\Http\Middleware\ForceJsonResponseMiddleware::class,
+        'api-set-locale' => \App\Http\Middleware\ApiLocalizationMiddleware::class,
+        'AdminStatus' => \App\Http\Middleware\CheckAdminStatusMiddleware::class,
     ];
 }

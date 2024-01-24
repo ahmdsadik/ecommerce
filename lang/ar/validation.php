@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'account_disabled' => 'تم إيقاف حسابك. تواصل مع احد المديرين.',
+
     'accepted' => 'يجب قبول حقل :attribute.',
     'accepted_if' => 'يجب قبول حقل :attribute عندما يكون :other هو :value.',
     'active_url' => 'يجب أن يكون حقل :attribute عنوان URL صالح.',

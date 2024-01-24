@@ -26,11 +26,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @permission('tag_create')
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="card-header">{{ __('dashboard/tag/index.card_header') }}</h5>
                         <a class="btn btn-primary me-4 rounded-0"
                            href="{{ route('dashboard.tags.create') }}">{{ __('dashboard/tag/index.add_btn') }}</a>
                     </div>
+                    @endpermission
                     <div class="table-responsive text-nowrap ">
                         <table class="table table-hover">
                             <thead>
@@ -67,11 +69,14 @@
                                                     data-bs-toggle="dropdown"><i
                                                     class="bx bx-dots-vertical-rounded"></i></button>
                                             <div class="dropdown-menu">
+                                                @permission('tag_update')
                                                 <a class="dropdown-item"
                                                    title="{{ __('dashboard/tag/index.edit') }}"
                                                    href="{{ route('dashboard.tags.edit', $tag) }}">
                                                     <i class="bx bx-edit-alt me-1"></i>{{ __('dashboard/tag/index.edit') }}
                                                 </a>
+                                                @endpermission
+                                                @permission('tag_delete')
                                                 <form action="{{ route('dashboard.tags.destroy', $tag) }}"
                                                       method="post">
                                                     @csrf
@@ -82,6 +87,7 @@
                                                         {{ __('dashboard/tag/index.delete') }}
                                                     </button>
                                                 </form>
+                                                @endpermission
                                             </div>
                                         </div>
                                     </td>

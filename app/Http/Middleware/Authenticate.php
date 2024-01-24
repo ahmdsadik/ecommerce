@@ -20,4 +20,11 @@ class Authenticate extends Middleware
         }
         return null;
     }
+
+    protected function unauthenticated($request, array $guards)
+    {
+        throw new AuthenticationException(
+            'Unauthenticated.', $guards, $this->redirectTo($request)
+        );
+    }
 }

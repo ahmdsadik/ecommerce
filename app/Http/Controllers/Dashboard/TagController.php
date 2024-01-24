@@ -14,9 +14,14 @@ use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
+
     public function __construct()
     {
+        $this->middleware('permission:tag_create')->only(['create', 'store']);
+        $this->middleware('permission:tag_update')->only(['edit', 'update']);
+        $this->middleware('permission:tag_delete')->only('destroy');
         $this->middleware('RemoveEmptyOrNull')->only('store', 'update');
+
     }
 
     public function index()

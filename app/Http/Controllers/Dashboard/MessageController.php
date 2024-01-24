@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:super_admin|admin');
+    }
+
     public function index()
     {
         return view('dashboard.Chat.index',

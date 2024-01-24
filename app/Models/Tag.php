@@ -41,7 +41,7 @@ class Tag extends Model implements TranslatableContract
             };
     }
 
-    /********************** Scopes ************************/
+    ########################## Scopes ############################
 
     public function scopeCachedCount()
     {
@@ -86,8 +86,8 @@ class Tag extends Model implements TranslatableContract
         return $query;
     }
 
-    /********************* Relations *********************/
-//
+    ########################## Relations ############################
+
 //    /**
 //     * Get all the brands that are assigned with this tag.
 //     */
@@ -101,14 +101,18 @@ class Tag extends Model implements TranslatableContract
         return $this->belongsToMany(Product::class);
     }
 
-    /***************** Static *******************/
+    ########################## Static ############################
 
     public static function translatedAttributes(): array
     {
         $attributes = [];
 
         foreach (LaravelLocalization::getSupportedLanguagesKeys() as $key) {
-            $attributes[$key . '.name'] = __('dashboard/tag/create.name', ['lang' => __('lang_key.with_' . $key)]);
+
+            foreach ((new self())->translatedAttributes as $attr) {
+                $attributes[$key . ".$attr"] = __('dashboard/tag/create.' . $attr, ['lang' => __('lang_key.with_' . $key)]);
+            }
+
         }
         return $attributes;
     }

@@ -209,6 +209,7 @@ return [
          */
 
         'TagStatus' => App\Enums\TagStatus::class,
+        'AdminStatus' => App\Enums\AdminStatus::class,
         'OrderStatus' => App\Enums\OrderStatus::class,
         'StoreStatus' => App\Enums\StoreStatus::class,
         'ProductStatus' => App\Enums\ProductStatus::class,

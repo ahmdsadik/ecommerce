@@ -3,6 +3,8 @@
 return [
     'dashboard' => 'لوحة التحكم',
 
+    'chat' => 'المحادثات',
+
     'categories' => 'الأقسام',
     'all_categories' => 'كل الأقسام',
     'add_category' => 'إضافة قسم',
@@ -18,5 +20,11 @@ return [
     'tags' => 'العلامات',
     'all_tags' => 'كل العلامات',
     'add_tag' => 'إضافة علامة',
+
+
+    'roles' => 'الأدوار',
+    'roles_list' => 'قائمة الأدوار',
+    'users' => 'المديرين',
+    'users_list' => 'قائمة المديرين',
 
 ];

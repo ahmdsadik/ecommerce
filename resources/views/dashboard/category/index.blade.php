@@ -26,11 +26,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @permission('category_create')
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="card-header">{{ __('dashboard/category/index.card_header') }}</h5>
                         <a class="btn btn-primary me-4 rounded-0"
                            href="{{ route('dashboard.categories.create') }}">{{ __('dashboard/category/index.add_btn') }}</a>
                     </div>
+                    @endpermission
                     <div class="table-responsive text-nowrap table-hover">
                         <table class="table">
                             <thead>
@@ -87,12 +89,15 @@
                                                     data-bs-toggle="dropdown"><i
                                                     class="bx bx-dots-vertical-rounded"></i></button>
                                             <div class="dropdown-menu">
+                                                @permission('category_update')
                                                 <a class="dropdown-item"
                                                    title="{{ __('dashboard/category/index.edit') }}"
                                                    href="{{ route('dashboard.categories.edit', $category) }}">
                                                     <i class="bx bx-edit-alt me-1"></i>{{ __('dashboard/category/index.edit') }}
                                                 </a>
+                                                @endpermission
 
+                                                @permission('category_delete')
                                                 <form action="{{ route('dashboard.categories.destroy',$category) }}"
                                                       method="post">
                                                     @csrf
@@ -103,6 +108,7 @@
                                                         {{ __('dashboard/category/index.delete') }}
                                                     </button>
                                                 </form>
+                                                @endpermission
                                             </div>
                                         </div>
                                     </td>

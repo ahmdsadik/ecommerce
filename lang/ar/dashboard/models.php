@@ -6,4 +6,7 @@ return
         'product' => 'منتج',
         'tag' => 'علامة',
         'store' => 'متجر',
+        'role' => 'دور',
+        'permission' => 'صلاحية',
+        'admin' => 'مدير',
     ];

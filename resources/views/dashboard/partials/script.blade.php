@@ -21,3 +21,9 @@
 <script src="{{ asset('assets/dashboard/js/dashboards-analytics.js') }}"></script>
 
 
+
+<script>
+    const user_id = '{{ auth('admin')->id() }}';
+    const user_name = '{{ auth('admin')->user()->name }}';
+    const csrf_token = '{{ csrf_token() }}';
+</script>

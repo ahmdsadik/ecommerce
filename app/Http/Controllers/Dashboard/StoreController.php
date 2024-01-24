@@ -13,6 +13,13 @@ class StoreController extends Controller
 {
     use InteractWithFiles;
 
+    public function __construct()
+    {
+        $this->middleware('permission:store_create')->only(['create', 'store']);
+        $this->middleware('permission:store_update')->only(['edit', 'update']);
+        $this->middleware('permission:store_delete')->only('destroy');
+    }
+
     public function index()
     {
         return view('dashboard.store.index',

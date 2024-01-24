@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AdminStatus;
 use App\Notifications\AdminEmailVerificationNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\AdminResetPasswordNotification;
@@ -31,7 +32,12 @@ class Admin extends Authenticatable implements LaratrustUser, MustVerifyEmail, H
         'email',
         'phone',
         'password',
+        'status',
     ];
+
+    protected $with = ['roles', 'permissions'];
+
+    const DEFAULT_PASSWORD = "12345678";
 
     /**
      * The attributes that should be hidden for serialization.
@@ -52,6 +58,7 @@ class Admin extends Authenticatable implements LaratrustUser, MustVerifyEmail, H
         'email_verified_at' => 'datetime',
         'phone_verified_at' => 'datetime',
         'password' => 'hashed',
+        'status' => AdminStatus::class
     ];
 
 
@@ -98,6 +105,15 @@ class Admin extends Authenticatable implements LaratrustUser, MustVerifyEmail, H
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'user_id');
+    }
+
+    public function getReadableStatusAttribute(): string
+    {
+        return match ($this->status) {
+            AdminStatus::ACTIVE => __('dashboard/status.active'),
+            AdminStatus::INACTIVE => __('dashboard/status.inactive'),
+            default => __('dashboard/status.un_known')
+        };
     }
 
 }

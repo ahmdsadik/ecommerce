@@ -73,6 +73,7 @@
                             <div class="mb-3">
                                 <label for="check" class="form-label">{{ __('dashboard/auth/login.email_username_password') }}</label>
                                 <input type="text" class="form-control" id="check" name="check"
+                                       value="{{ old('check') }}"
                                        placeholder="{{ __('dashboard/auth/login.enter_email_username_password') }}" autofocus>
                                 <x-input-error key="check" />
                             </div>

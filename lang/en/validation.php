@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'account_disabled' => 'Your account was disabled. Contact Admins.',
+
     'accepted' => 'The :attribute field must be accepted.',
     'accepted_if' => 'The :attribute field must be accepted when :other is :value.',
     'active_url' => 'The :attribute field must be a valid URL.',
